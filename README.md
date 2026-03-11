@@ -1,1 +1,1 @@
-# chess-tournament-db
+schema relazionale completo e ottimizzato per la gestione di tornei di scacchi. Il database è stato progettato per garantire l'integrità dei dati scacchistici e automatizzare le operazioni tipiche di un arbitro o di un organizzatore
