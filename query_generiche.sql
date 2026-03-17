@@ -8,7 +8,7 @@ select *
 from tournaments
 
 
---Elenco dei giocatori iscritti al torneo di spilimbergo master ordinati per Elo (dal più forte al più debole)
+--Elenco dei giocatori iscritti al torneo di spilimbergo master ordinati per Elo (dal piÃ¹ forte al piÃ¹ debole)
 
 select p.Fide_ID, p.Name, p.Surname, p.Elo
 from Tournaments as t join Registrations as r on t.Tournament_ID = r.Tournament_ID
