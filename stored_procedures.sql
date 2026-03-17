@@ -1,7 +1,7 @@
 --Inserimento sicuro
 --Obiettivo: creare una procedura per inserire una nuova partita, ma l'arbitro (o chi inserisce i dati) a volte sbaglia 
---e cerca di far giocare un giocatore che sta gi‡ giocando un'altra partita in quello stesso turno
---La procedura deve prima controllare se il Bianco o il Nero hanno gi‡ una partita registrata in quel Round_Number e Tournament_ID. 
+--e cerca di far giocare un giocatore che sta gi√† giocando un'altra partita in quello stesso turno
+--La procedura deve prima controllare se il Bianco o il Nero hanno gi√† una partita registrata in quel Round_Number e Tournament_ID. 
 --Se ce l'hanno, blocca tutto e lancia un messaggio di errore. Altrimenti, inserisce la partita.
 
 CREATE PROCEDURE InserisciPartitaSicura
@@ -13,7 +13,7 @@ CREATE PROCEDURE InserisciPartitaSicura
     @Risultato DECIMAL(2,1)
 AS
 BEGIN
-    -- Controllo se uno dei due giocatori sta gi‡ giocando in questo turno di questo torneo
+    -- Controllo se uno dei due giocatori sta gi√† giocando in questo turno di questo torneo
     IF EXISTS (
         SELECT 1 
         FROM matches
@@ -22,12 +22,12 @@ BEGIN
           AND (Fide_ID_White IN (@IdBianco, @IdNero) OR Fide_ID_Black IN (@IdBianco, @IdNero))
     )
     BEGIN
-        -- Se la query sopra trova qualcosa, significa che c'Ë un'anomalia
-        PRINT 'ERRORE: Uno dei due giocatori sta gi‡ giocando in questo turno!';
+        -- Se la query sopra trova qualcosa, significa che c'√® un'anomalia
+        PRINT 'ERRORE: Uno dei due giocatori sta gi√† giocando in questo turno!';
     END
     ELSE
     BEGIN
-        -- Se non c'Ë nessuna anomalia, procedo con l'inserimento
+        -- Se non c'√® nessuna anomalia, procedo con l'inserimento
         INSERT INTO Matches (Board_Number, Tournament_ID, Round_Number, Fide_ID_White, Fide_ID_Black, Result)
         VALUES (@Board, @Torneo, @Turno, @IdBianco, @IdNero, @Risultato);
         
@@ -36,7 +36,7 @@ BEGIN
 END
 
 --Ricerca Giocatore
---Obiettivo: Creare una procedura che, dandole in pasto l'ID FIDE di un giocatore, ti restituisca tutti i suoi dati anagrafici (Nome, Cognome, Nazionalit‡, Elo).
+--Obiettivo: Creare una procedura che, dandole in pasto l'ID FIDE di un giocatore, ti restituisca tutti i suoi dati anagrafici (Nome, Cognome, Nazionalit√†, Elo).
 
 create procedure cerca_giocatore
     @ID_cercato int
